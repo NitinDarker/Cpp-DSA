@@ -46,24 +46,32 @@ bool isSafe(int row, int col, int n, vector<string> &board) {
         col--;
     }
 
-    return true; // Yes it is safe to place Queen in this spot
+    return true; 
+    // Yes it is safe to place Queen in this spot
 }
 
 // Recursive-BackTracking function
 void solve(int col, int n, vector<string> &board, vector<vector<string>> &ans) {
+
     if (col == n) {
         // Base condition for recursion
         ans.push_back(board);
         return;
     }
-
     // To place the queen in every row
     for (int row = 0; row < n; row++) {
+
         // Check if it possible to place the queen in given row & col
         if (isSafe(row, col, n, board)) {
-            board[row][col] = 'Q';         // Placing queen on board
-            solve(col + 1, n, board, ans); // Recursion step with col+1
-            board[row][col] = '.';         // Backtracking step
+            
+            // Placing queen on board
+            board[row][col] = 'Q';         
+            
+            // Recursion step with col+1
+            solve(col + 1, n, board, ans); 
+            
+            // Backtracking step
+            board[row][col] = '.';         
         }
     }
 }
