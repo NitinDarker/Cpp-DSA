@@ -1,5 +1,6 @@
 *.exe
 *.class
 .vscode/
-test.cpp
 color.css
+test.cpp
+test2.cpp
