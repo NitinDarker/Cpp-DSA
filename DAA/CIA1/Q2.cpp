@@ -4,7 +4,7 @@
 using namespace std;
 
 // Distributes the input numbers into m lists
-vector<vector<int>> distributeNumbers(vector<int> numbers, int m) {
+vector<vector<int>> distributeNumbers(vector<int> &numbers, int m) {
     vector<vector<int>> lists(m);
     for (int i = 0; i < numbers.size(); i++) {
         int listIndex = i % m;
@@ -14,13 +14,13 @@ vector<vector<int>> distributeNumbers(vector<int> numbers, int m) {
 }
 
 // Sorts each list individually
-void sortLists(vector<vector<int>> lists) {
+void sortLists(vector<vector<int>> &lists) {
     for (auto &list : lists) {
         sort(list.begin(), list.end());
     }
 }
 
-void printLists(vector<vector<int>> lists) {
+void printLists(vector<vector<int>> &lists) {
     cout << "\nSorted lists:" << endl;
     for (int i = 0; i < lists.size(); i++) {
         cout << "List " << i + 1 << ": ";
@@ -32,7 +32,7 @@ void printLists(vector<vector<int>> lists) {
 }
 
 // Merge m sorted lists into a single sorted list using heap.
-vector<int> mergeSortedLists(vector<vector<int>> lists) {
+vector<int> mergeSortedLists(vector<vector<int>> &lists) {
     Heap minHeap;
     vector<int> merged;
 
@@ -51,7 +51,7 @@ vector<int> mergeSortedLists(vector<vector<int>> lists) {
         merged.push_back(current.value);
 
         int nextIndex = current.elementIndex + 1;
-        
+
         if (nextIndex < lists[current.listIndex].size()) {
             HeapNode nextNode;
             nextNode.value = lists[current.listIndex][nextIndex];
