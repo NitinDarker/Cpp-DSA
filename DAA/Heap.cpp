@@ -64,21 +64,3 @@ class Heap {
         cout << endl;
     }
 };
-
-int main() {
-    Heap minHeap;
-    minHeap.insertKey(5);
-    minHeap.insertKey(12);
-    minHeap.insertKey(16);
-    minHeap.insertKey(10);
-    minHeap.insertKey(6);
-
-    cout << "Heap after insertions:" << endl;
-    minHeap.printHeap();
-
-    cout << "\nPopping root: " << minHeap.popRoot() << endl;
-    cout << "Heap after popping the root:" << endl;
-    minHeap.printHeap();
-
-    return 0;
-}
