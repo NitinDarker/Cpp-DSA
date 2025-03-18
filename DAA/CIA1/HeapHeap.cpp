@@ -28,7 +28,7 @@ class Heap {
     // Delete and return the root (minimum element) of the heap.
     HeapNode popRoot() {
         if (arr.empty()) {
-            throw out_of_range("Heap is empty");
+            return {-1, -1, -1};
         }
         HeapNode rootValue = arr[0];
         arr[0] = arr.back();
@@ -37,7 +37,7 @@ class Heap {
         return rootValue;
     }
 
-    bool empty() const {
+    bool empty() {
         return arr.empty();
     }
 
@@ -61,9 +61,8 @@ class Heap {
     }
 
   public:
-    // For debugging: prints the current elements in the heap.
     void printHeap() {
-        for (const auto &node : arr) {
+        for (auto node : arr) {
             cout << node.value << " ";
         }
         cout << endl;

@@ -1,4 +1,4 @@
-#include "Heap.cpp"
+#include "HeapHeap.cpp"
 #include <bits/stdc++.h>
 #include <iostream>
 using namespace std;
@@ -20,7 +20,7 @@ void sortLists(vector<vector<int>> lists) {
     }
 }
 
-void printLists(vector<vector<int>> &lists) {
+void printLists(vector<vector<int>> lists) {
     cout << "\nSorted lists:" << endl;
     for (int i = 0; i < lists.size(); i++) {
         cout << "List " << i + 1 << ": ";
@@ -29,6 +29,39 @@ void printLists(vector<vector<int>> &lists) {
         }
         cout << endl;
     }
+}
+
+// Merge m sorted lists into a single sorted list using heap.
+vector<int> mergeSortedLists(vector<vector<int>> lists) {
+    Heap minHeap;
+    vector<int> merged;
+
+    for (int i = 0; i < lists.size(); i++) {
+        if (!lists[i].empty()) {
+            HeapNode node;
+            node.value = lists[i][0];
+            node.listIndex = i;
+            node.elementIndex = 0;
+            minHeap.insertKey(node);
+        }
+    }
+
+    while (!minHeap.empty()) {
+        HeapNode current = minHeap.popRoot();
+        merged.push_back(current.value);
+
+        int nextIndex = current.elementIndex + 1;
+        
+        if (nextIndex < lists[current.listIndex].size()) {
+            HeapNode nextNode;
+            nextNode.value = lists[current.listIndex][nextIndex];
+            nextNode.listIndex = current.listIndex;
+            nextNode.elementIndex = nextIndex;
+            minHeap.insertKey(nextNode);
+        }
+    }
+
+    return merged;
 }
 
 int main() {
