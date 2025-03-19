@@ -3,7 +3,7 @@
 using namespace std;
 
 bool getIthBit(int n, int i) { // Returns the bit on the ith place of n
-    int mask = (1 << i);      // Accessing the ith bit of n
+    int mask = (1 << i);       // Accessing the ith bit of n
     if (n & mask) {
         return 1;
     }
@@ -18,6 +18,15 @@ int setIthBit(int n, int i) { // Return the num after setting its ith bit to 1
 int clearIthBit(int n, int i) { // Returns the num after setting its ith bit to 0
     int mask = ~(1 << i);       // Accessing the ith bit of n
     return n & mask;
+}
+
+int toggleIthBit(int n, int i) { // Returns the num after toggling the ith bit
+    int mask = (1 << i);         // Accessing the ith bit of n
+    return n ^ mask;
+}
+
+int clearRightmostSetBit(int n) { // Returns num after clearing the last (rightmost) set bit
+    return n & (n - 1);
 }
 
 int main() {

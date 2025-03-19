@@ -2,11 +2,9 @@
 using namespace std;
 
 bool isPowerOfTwo(int n) {
+    if (n <= 0) return false;
     int bitMask = n & (n - 1);
-    if (!bitMask) {
-        return true;
-    }
-    return false;
+    return !bitMask;
 }
 
 int main() {

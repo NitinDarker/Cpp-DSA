@@ -10,9 +10,15 @@ void swap(int &a, int &b) {
 }
 
 int main() {
-    int x = 5;
-    int y = 10;
+    cout << "Enter two numbers to swap - " << endl;
+    int x, y;
+    cout << "x = ";
+    cin >> x;
+    cout << "y = ";
+    cin >> y;
     swap(x, y);
-    cout << x << " " << y << endl;
+    cout << "Swapping..." << endl;
+    cout << "x = " << x << endl;
+    cout << "y = " << y << endl;
     return 0;
 }
