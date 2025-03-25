@@ -1,13 +1,15 @@
+// Level Order Traversal -> Breadth-First Search
 #include <bits/stdc++.h>
 using namespace std;
 
-// Level Order Traversal -> Breadth-First Search
+// Printing all the nodes in BFS fashion
 void bfs(vector<vector<int>> &graph) {
     // Graph is provided in the form of an Adjacency List (1-based Indexing)
     vector<int> visited(graph.size(), 0);
     queue<int> q;
 
-    q.push(1); // 1-based Indexing
+    // 1-based Indexing
+    q.push(1); // Starting Node = 1
     visited[1] = 1;
 
     while (!q.empty()) {
@@ -32,7 +34,8 @@ vector<int> bfsOfGraph(vector<vector<int>> &graph) {
     vector<int> res;
     queue<int> q;
 
-    q.push(0); // 0-Based Indexing
+    // 0-Based Indexing
+    q.push(0); // Starting Node = 0
     visited[0] = 1;
 
     while (!q.empty()) {
