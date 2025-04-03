@@ -9,7 +9,7 @@ void bfs(const vector<vector<int>> &matrix, vector<bool> &visited, int start) {
 
     while (!q.empty()) {
         int node = q.front();
-        q.pop();
+        q.pop();   
 
         // Traversing all possible connections
         for (int i = 0; i < matrix.size(); i++) {

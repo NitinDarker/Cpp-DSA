@@ -89,7 +89,8 @@ vector<vector<string>> solveNQueens(int n) {
 }
 
 int main() {
-    int n = 4;
+    int n = 16;
     vector<vector<string>> ans = solveNQueens(n);
+    cout << ans.size() << endl;
     return 0;
 }
