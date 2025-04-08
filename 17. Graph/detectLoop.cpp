@@ -10,6 +10,20 @@ vector<vector<int>> createAdj(int V, vector<vector<int>> &edges) {
     return adj;
 }
 
+bool checkLoopDFS(pair<int, int> start, vector<vector<int>> &adj, vector<bool> &visited) {
+    int node = start.first;
+    int parent = start.second;
+    visited[node] = true;
+    for (int nei : adj[node]) {
+        if (!visited[nei]) {
+            if (checkLoopDFS({nei, node}, adj, visited)) return true;
+        } else if (visited[nei] && nei != parent) {
+            return true;
+        }
+    }
+    return false;
+}
+
 bool checkLoopBFS(int start, vector<vector<int>> &adj, vector<bool> &visited) {
     queue<pair<int, int>> q; // {Node, parent}
     q.push({start, -1});
@@ -31,12 +45,13 @@ bool checkLoopBFS(int start, vector<vector<int>> &adj, vector<bool> &visited) {
     return false;
 }
 
+// Detection of cycle/loop in an undirected graph
 bool isCycle(int V, vector<vector<int>> &edges) {
     vector<vector<int>> adj = createAdj(V, edges); // Adjacency List
     vector<bool> visited(V, false);
     for (int i = 0; i < V; i++) {
-        if (!visited[i] && checkLoopBFS(i, adj, visited))
-            return true;
+        // if (!visited[i] && checkLoopBFS(i, adj, visited)) return true;
+        if (!visited[i] && checkLoopDFS({i, -1}, adj, visited)) return true;
     }
     return false;
 }
