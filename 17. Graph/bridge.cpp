@@ -36,8 +36,8 @@ class Solution {
     vector<vector<int>> criticalConnections(int V, vector<vector<int>> &edges) {
         vector<vector<int>> adj = createAdj(V, edges);
         vector<int> visited(V, 0), steps(V, 0), low(V, 0);
-        steps[0] = 0;
         low[0] = 0;
+        steps[0] = 0;
         int step = 0;
         for (int i = 0; i < V; i++) {
             if (!visited[i]) {
