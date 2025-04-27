@@ -5,6 +5,7 @@
 #define MAX_N 32
 #define MAX_THREADS (MAX_N / 2 + 1)
 
+
 typedef struct {
     int row, ld, rd, depth;
 } StackFrame;
