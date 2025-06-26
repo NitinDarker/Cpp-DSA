@@ -1,6 +1,8 @@
+// https://www.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1
 #include <bits/stdc++.h>
 using namespace std;
 
+// Recursion -> Top-Down Approach
 int maxProfitRec(int i, int w, const vector<int> &profit, const vector<int> &weight) {
     if (i == 0) {
         int take = INT_MIN;
@@ -14,6 +16,7 @@ int maxProfitRec(int i, int w, const vector<int> &profit, const vector<int> &wei
     return max(take, notTake);
 }
 
+// Memoization -> Recursion + DP (for overlapping sub-problems)
 int maxProfitDP(int i, int w, vector<vector<int>> &dp, vector<int> &profit, vector<int> &weight) {
     if (i == 0) {
         int take = INT_MIN;
@@ -30,6 +33,7 @@ int maxProfitDP(int i, int w, vector<vector<int>> &dp, vector<int> &profit, vect
     return dp[i][w];
 }
 
+// Tabulation -> Bottom-Up Approach
 int maxProfitTab(vector<int> &profit, vector<int> &weight, int maxWeight) {
     int n = profit.size();
     vector<vector<int>> dp(n, vector<int>(maxWeight+1, 0));
