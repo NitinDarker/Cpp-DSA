@@ -2,14 +2,14 @@
 #include <iostream>
 using namespace std;
 
-int main(){
-     char ch = 'A';
+int main() {
+    char ch = 'A';
 
-     for(int i=0; i<5; i++){
-          for(int j=0; j<=i; j++){
-               cout << ch++;
-          }
-          cout << endl;
-     }
-     return 0;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j <= i; j++) {
+            cout << ch++;
+        }
+        cout << endl;
+    }
+    return 0;
 }
