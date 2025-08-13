@@ -58,6 +58,6 @@ vector<int> topoSort(int V, vector<vector<int>> &edges) {
         sorted.push_back(st.top());
         st.pop();
     }
-    // return sorted;
-    return bfs(adj);
+    return sorted;
+    // return bfs(adj);
 }
