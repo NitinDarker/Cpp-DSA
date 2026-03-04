@@ -1,56 +1,56 @@
 #include <iostream>
 using namespace std;
 
-struct node { // Structure for a node in a linked list
+struct Node { // Structure for a Node in a linked list
     int data;
-    node *next;
+    Node *next;
 };
 
-node *createNode(int data) { // To create a new node structure
-    node *n = new node;
+Node *createNode(int data) { // To create a new Node structure
+    Node *n = new Node;
     n->data = data;
     n->next = NULL;
-    return n; // Returns the pointer pointing this newly created node
+    return n; // Returns the pointer pointing this newly created Node
 }
 
-bool isEmpty(node *head) { // To check if a linked list is empty or not
-    if (head == NULL) {    // Head points to the first node in the list
+bool isEmpty(Node *head) { // To check if a linked list is empty or not
+    if (head == NULL) {    // Head points to the first Node in the list
         return true;
     }
     return false;
 }
 
-void display(node *head) { // To print the data in a linked list
+void display(Node *head) { // To print the data in a linked list
     if (isEmpty(head)) {
         cout << "Linked List is Empty!" << endl;
         return;
     }
-    node *temp = head; // Creating a temporary pointer
+    Node *temp = head; // Creating a temporary pointer
     while (temp != NULL) {
         cout << temp->data << " ";
-        temp = temp->next; // Traversing the temp till the last node of the list
+        temp = temp->next; // Traversing the temp till the last Node of the list
     }
     cout << endl;
 }
 
-node *addNode(node *head, int data) { // To add a new node in the list
+Node *addNode(Node *head, int data) { // To add a new Node in the list
     if (isEmpty(head)) {
-        head = createNode(data); // If the list is empty, then creates first node
+        head = createNode(data); // If the list is empty, then creates first Node
         return head;
     }
 
-    node *temp = head; // Creating a temporary pointer to a node
+    Node *temp = head; // Creating a temporary pointer to a Node
     while (temp->next != NULL) {
         temp = temp->next;
-    } // Temp points to the last node of the linked list
+    } // Temp points to the last Node of the linked list
 
-    temp->next = createNode(data); // Linking last node to the newly created node
+    temp->next = createNode(data); // Linking last Node to the newly created Node
     return head;
 }
 
 int main() {
-    // Head points to the first node of the linked list
-    node *head = NULL; // Initially head points to NULL
+    // Head points to the first Node of the linked list
+    Node *head = NULL; // Initially head points to NULL
     // An empty linked list is created...
     head = createNode(10);
     head = addNode(head, 25);
@@ -58,6 +58,5 @@ int main() {
     head = addNode(head, 45);
     head = addNode(head, 55);
     head = addNode(head, 65);
-
     display(head);
 }
