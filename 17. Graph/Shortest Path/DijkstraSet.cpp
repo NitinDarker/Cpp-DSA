@@ -1,4 +1,4 @@
-// https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
+// // https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -12,24 +12,25 @@ class Solution {
             graph[v].push_back({u, c});
         }
 
-        // pq <- {cost, node}
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+        // st <- {cost, node}
+        set<pair<int, int>> st;
         vector<int> dist(V, 1e9);
-        pq.push({0, src});
+        st.insert({0, src});
         dist[src] = 0;
 
-        while (!pq.empty()) {
-            auto [cost, node] = pq.top();
-            pq.pop();
-
-            // Lazy pruning
-            if (cost > dist[node])
-                continue;
+        while (!st.empty()) {
+            auto it = st.begin();
+            int cost = it->first;
+            int node = it->second;
+            st.erase(it);
 
             for (auto &[nei, weight] : graph[node]) {
                 if (cost + weight < dist[nei]) {
+                    if (dist[nei] != 1e9) {
+                        st.erase({dist[nei], nei});
+                    }
                     dist[nei] = cost + weight;
-                    pq.push({cost + weight, nei});
+                    st.insert({cost + weight, nei});
                 }
             }
         }
